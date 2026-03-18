@@ -1,0 +1,11 @@
+services:
+  blog:
+    build: .
+    ports:
+      - "80:3000"
+    volumes:
+      # Blog content (markdown, images, configs) — persisted on host
+      - ./data/blogs:/app/public/blogs
+    env_file:
+      - .env.local
+    restart: unless-stopped
